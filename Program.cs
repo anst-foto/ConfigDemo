@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System.Text.Json;
+using ConfigDemo;
+
+var config = Config.GetConfig();
+
+var person = JsonSerializer.Deserialize<Person>(File.ReadAllText(config.Path));
+Console.WriteLine($"{person.LastName} {person.FirstName} - {person.BirthDate:d}");
